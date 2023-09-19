@@ -132,7 +132,7 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 
 		int layer = 3;
 		// binary shift, the player layer is 3, this takes the player binary int and inverts it so 111111111011 so the player can be ignored.
-		layer = (1 << layer);
+		layer = (1 << layer) | (1 << 6);
 		layer = ~layer;
 
 		if (Physics2D.Raycast(transform.position, Vector2.down, (transform.localScale.y / 2) + 0.1f, layer))

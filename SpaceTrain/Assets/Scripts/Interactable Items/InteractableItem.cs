@@ -25,6 +25,8 @@ public class InteractableItem : MonoBehaviour, IPlayerInteractable
 			anyCollider.isTrigger = false;
 			Debug.LogWarningFormat("Disabled the trigger on {0}", transform.name);
 		}
+
+		gameObject.layer = 6;
 	}
 
 	void IPlayerInteractable.Interacted()
