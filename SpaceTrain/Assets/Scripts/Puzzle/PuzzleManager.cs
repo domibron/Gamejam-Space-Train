@@ -44,8 +44,6 @@ public class PuzzleManager : MonoBehaviour
 
 		}
 
-		print(allCompleate);
-
 		if (allCompleate == true)
 		{
 			Door.SetActive(false);

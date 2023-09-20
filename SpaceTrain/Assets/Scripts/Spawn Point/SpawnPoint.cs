@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-	[SerializeField] private bool Enabled = true;
+	public bool Enabled = true;
 
-	void Awake()
+	void Start()
 	{
 		if (Enabled && PlayerInstance.Instance != null)
 			PlayerInstance.Instance.MovePlayer(transform.position);

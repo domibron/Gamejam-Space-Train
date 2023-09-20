@@ -48,11 +48,11 @@ public class MasterSceneManager : MonoBehaviour
 				Debug.LogWarningFormat("Debug overide is enabled on Master Scene Manager");
 
 
-				int? currentSceneIndex = null;
-				currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+				//int? currentSceneIndex = null;
+				//currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-				if (currentSceneIndex == null) return; // * there is a return here.
-				CurrentLevel = currentSceneIndex.Value - _buildIndexOffset;
+				//if (currentSceneIndex == null) return; // * there is a return here.
+				//CurrentLevel = currentSceneIndex.Value - _buildIndexOffset;
 			}
 			catch (ArgumentNullException e)
 			{
@@ -64,11 +64,10 @@ public class MasterSceneManager : MonoBehaviour
 		{
 
 			// not sure about this
-			int? currentSceneIndex = null;
+			int currentSceneIndex = 0;
 			currentSceneIndex = SceneManager.GetActiveScene().buildIndex - _buildIndexOffset;
-
-			if (currentSceneIndex == null) return; // * there is a return here.
-			CurrentLevel = currentSceneIndex.Value - _buildIndexOffset;
+			print(currentSceneIndex);
+			CurrentLevel = currentSceneIndex - _buildIndexOffset;
 		}
 	}
 

@@ -10,7 +10,7 @@ public class PlayerInstance : MonoBehaviour
 	{
 		if (Instance != null && Instance != this)
 		{
-			// Destroy(this);
+			Destroy(this);
 		}
 		else
 		{
