@@ -11,11 +11,11 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 {
 	[Header("Changeable variables")]
 
-	[SerializeField] private float _gravity = -9.81f;
+	// [SerializeField] private float _gravity = -9.81f;
 
 	[SerializeField] private float _jumpHeight = 1.4f;
 
-	[SerializeField] private float _sprintSpeed = 10;
+	[SerializeField] private float _multiplyer = 10;
 
 	[SerializeField] private float _walkSpeed = 5;
 
@@ -26,8 +26,6 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	private Dictionary<bool[], string> _fourAxisOfMovement;
 
 	private bool[] _currentInputArray = new bool[4]; // structured as W A S D = 0 1 2 3
-
-	private Vector3 _moveDir = new();
 
 	private Vector3 _velocity;
 
@@ -41,18 +39,48 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	void Start()
 	{
 		InitInputDictionary();
+		if (MasterSceneManager.Instance != null)
+			MasterSceneManager.onLoadNewScene += OnLoadNewScene;
 	}
 
 	void Update()
 	{
-		HandleMovement();
+		HandleGroundCheck();
+	}
 
-		HandleGroundCheck(); // redo this
+	void FixedUpdate() // runs 50 times every 60 frames
+	{
+		HandleMovement();
+	}
+
+	private void OnLoadNewScene()
+	{
+		print("Check");
+		_currentInputArray[0] = false;
+		_currentInputArray[1] = false;
+		_currentInputArray[2] = false;
+		_currentInputArray[3] = false;
 	}
 
 	private void HandleMovement()
 	{
 		// TODO add more control.
+
+
+
+		float ySpeed = _rb.velocity.y;
+
+		_rb.velocity = new Vector2(_rb.velocity.x, 0);
+
+		// clamps to max speed
+		if (_rb.velocity.magnitude > _walkSpeed)
+		{
+			_rb.velocity = _rb.velocity.normalized * _walkSpeed;
+		}
+
+		_rb.velocity = new Vector2(_rb.velocity.x, ySpeed);
+
+
 
 		// jumping
 		if (MoveDir().y > 0 && _rb.velocityY <= 0.1f && _isGrounded)
@@ -61,12 +89,64 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 		}
 
 		// left right movement
-		_rb.AddForce(new Vector2(MoveDir().x, 0) * _walkSpeed, ForceMode2D.Force);
+		_rb.AddForce(new Vector2(MoveDir().x, 0) * _walkSpeed * _multiplyer, ForceMode2D.Force);
+
+
+		// TODO replace this with sting interpitation
+		// we are not taking W or S in account.
+
+		if (MoveDir().x > 0 && _rb.velocityX < 0)
+		{
+			_rb.velocityX = 0f;
+		}
+		else if (MoveDir().x < 0 && _rb.velocityX > 0)
+		{
+			_rb.velocityX = 0f;
+		}
+		else if (!_currentInputArray[1] && !_currentInputArray[3])
+		{
+			_rb.velocityX = 0f; // stops any movement
+		}
+		// else if ((!_currentInputArray[1] && !_currentInputArray[3]) || (_currentInputArray[1] && _currentInputArray[3]))
+		// {
+		// 	_rb.velocityX = 0f; // stops any movement
+		// }
+		else if ((MoveDir().x > 0 && _rb.velocityX > 0) || (MoveDir().x < 0 && _rb.velocityX < 0))
+		{
+			// nothing
+		}
+		else
+		{
+			// nothing
+		}
+
+
+		// // if we are going left and only A is being held, set velocity to 0.
+		// if (_moveDir.x > -0.1 && (_currentInputArray[1] && !_currentInputArray[3]))
+		// {
+		// 	_rb.velocityX = 0f;
+		// }
+
+		// // if we are going right and only D is being held, set velocity to 0.
+		// if (_moveDir.x < 0.1 && (!_currentInputArray[1] && _currentInputArray[3]))
+		// {
+		// 	_rb.velocityX = 0f;
+		// }
+
+
+
+		// TODO end of todo.
 	}
 
 	void HandleGroundCheck()
 	{
-		if (Physics2D.Raycast(transform.position, -transform.up, 1.1f))
+
+		int layer = 3;
+		// binary shift, the player layer is 3, this takes the player binary int and inverts it so 111111111011 so the player can be ignored.
+		layer = (1 << layer) | (1 << 6);
+		layer = ~layer;
+
+		if (Physics2D.Raycast(transform.position, Vector2.down, (transform.localScale.y / 2) + 0.1f, layer))
 		{
 			_isGrounded = true;
 		}
