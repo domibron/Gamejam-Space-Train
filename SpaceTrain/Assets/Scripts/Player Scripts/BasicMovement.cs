@@ -19,6 +19,8 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 
 	[SerializeField] private float _walkSpeed = 5;
 
+	[SerializeField] public LayerMask DoNotDetectLayers;
+
 
 	// Core 
 	private Rigidbody2D _rb;
@@ -140,11 +142,11 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 
 	void HandleGroundCheck()
 	{
+		// binary shift, the player layer is 3, this takes the player binary int and inverts it so 111111111011 so the player can be ignored. // ignore
+		// layer = (1 << layer) | (1 << 6);
+		// layer = ~layer;
 
-		int layer = 3;
-		// binary shift, the player layer is 3, this takes the player binary int and inverts it so 111111111011 so the player can be ignored.
-		layer = (1 << layer) | (1 << 6);
-		layer = ~layer;
+		int layer = ~DoNotDetectLayers;
 
 		if (Physics2D.Raycast(transform.position, Vector2.down, (transform.localScale.y / 2) + 0.1f, layer))
 		{
