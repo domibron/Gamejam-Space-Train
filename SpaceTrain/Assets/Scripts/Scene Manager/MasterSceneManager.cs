@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MasterSceneManager : MonoBehaviour
 {
-	[Header("Variables")]
+	public static MasterSceneManager Instance { get; private set; }
 
-	public static MasterSceneManager Instance;
+	[Header("Variables")]
 
 	[SerializeField] private int _buildIndexOffset = 1;
 
@@ -26,7 +26,7 @@ public class MasterSceneManager : MonoBehaviour
 	{
 		if (Instance != null && Instance != this)
 		{
-			Destroy(gameObject);
+			Destroy(this);
 		}
 		else
 		{
