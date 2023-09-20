@@ -62,6 +62,7 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 		_currentInputArray[1] = false;
 		_currentInputArray[2] = false;
 		_currentInputArray[3] = false;
+		_isGrounded = false;
 	}
 
 	private void HandleMovement()
