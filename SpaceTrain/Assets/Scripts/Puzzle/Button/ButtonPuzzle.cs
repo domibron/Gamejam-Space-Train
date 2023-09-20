@@ -38,12 +38,12 @@ public class ButtonPuzzle : MonoBehaviour
 
 	}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        PManager.UpdateValueInCollection(_ID.Value, true);
-    }
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		PManager.UpdateValueInCollection(_ID.Value, true);
+	}
 
-    void OnTriggerExit2D(Collider2D other)
+	void OnTriggerExit2D(Collider2D other)
 	{
 		PManager.UpdateValueInCollection(_ID.Value, false);
 

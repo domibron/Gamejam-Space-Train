@@ -41,7 +41,6 @@ public class PuzzleManager : MonoBehaviour
 				//continue;
 				break;
 			}
-
 		}
 
 		if (allCompleate == true)
