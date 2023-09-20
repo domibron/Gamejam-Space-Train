@@ -53,7 +53,7 @@ public class WASDInputDetection : MonoBehaviour
 		{
 			_iWASDInput.W_Key_Held(true);
 		}
-		else if (Input.GetKeyUp(KeyCode.W))
+		else if (Input.GetKeyUp(KeyCode.W) || !Input.GetKeyDown(KeyCode.W))
 		{
 			_iWASDInput.W_Key_Held(false);
 		}
@@ -65,7 +65,7 @@ public class WASDInputDetection : MonoBehaviour
 		{
 			_iWASDInput.A_Key_Held(true);
 		}
-		else if (Input.GetKeyUp(KeyCode.A))
+		else if (Input.GetKeyUp(KeyCode.A) || !Input.GetKeyDown(KeyCode.A))
 		{
 			_iWASDInput.A_Key_Held(false);
 		}
@@ -77,7 +77,7 @@ public class WASDInputDetection : MonoBehaviour
 		{
 			_iWASDInput.S_Key_Held(true);
 		}
-		else if (Input.GetKeyUp(KeyCode.S))
+		else if (Input.GetKeyUp(KeyCode.S) || !Input.GetKeyDown(KeyCode.S))
 		{
 			_iWASDInput.S_Key_Held(false);
 		}
@@ -89,7 +89,7 @@ public class WASDInputDetection : MonoBehaviour
 		{
 			_iWASDInput.D_Key_Held(true);
 		}
-		else if (Input.GetKeyUp(KeyCode.D))
+		else if (Input.GetKeyUp(KeyCode.D) || !Input.GetKeyDown(KeyCode.D))
 		{
 			_iWASDInput.D_Key_Held(false);
 		}

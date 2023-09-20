@@ -11,7 +11,7 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 {
 	[Header("Changeable variables")]
 
-	[SerializeField] private float _gravity = -9.81f;
+	// [SerializeField] private float _gravity = -9.81f;
 
 	[SerializeField] private float _jumpHeight = 1.4f;
 
@@ -39,6 +39,8 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	void Start()
 	{
 		InitInputDictionary();
+		if (MasterSceneManager.Instance != null)
+			MasterSceneManager.onLoadNewScene += OnLoadNewScene;
 	}
 
 	void Update()
@@ -49,6 +51,15 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	void FixedUpdate() // runs 50 times every 60 frames
 	{
 		HandleMovement();
+	}
+
+	private void OnLoadNewScene()
+	{
+		print("Check");
+		_currentInputArray[0] = false;
+		_currentInputArray[1] = false;
+		_currentInputArray[2] = false;
+		_currentInputArray[3] = false;
 	}
 
 	private void HandleMovement()

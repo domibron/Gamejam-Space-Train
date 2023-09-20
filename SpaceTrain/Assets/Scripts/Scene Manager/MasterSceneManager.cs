@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MasterSceneManager : MonoBehaviour
 {
+	public delegate void OnLoadNewScene();
+	public static event OnLoadNewScene onLoadNewScene;
+
+
 	public static MasterSceneManager Instance { get; private set; }
 
 	[Header("Variables")]
@@ -45,16 +49,26 @@ public class MasterSceneManager : MonoBehaviour
 
 
 				int? currentSceneIndex = null;
-				currentSceneIndex = SceneManager.GetActiveScene().buildIndex - _buildIndexOffset;
+				currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
 				if (currentSceneIndex == null) return; // * there is a return here.
-				CurrentLevel = currentSceneIndex.Value;
+				CurrentLevel = currentSceneIndex.Value - _buildIndexOffset;
 			}
 			catch (ArgumentNullException e)
 			{
 				Debug.LogWarningFormat("A error occourd but I caught it.\nhappen at {0}\n{0}", e.Source, e.Message);
 				CurrentLevel = 999;
 			}
+		}
+		else
+		{
+
+			// not sure about this
+			int? currentSceneIndex = null;
+			currentSceneIndex = SceneManager.GetActiveScene().buildIndex - _buildIndexOffset;
+
+			if (currentSceneIndex == null) return; // * there is a return here.
+			CurrentLevel = currentSceneIndex.Value - _buildIndexOffset;
 		}
 	}
 
@@ -71,9 +85,13 @@ public class MasterSceneManager : MonoBehaviour
 	// call this once every level.
 	public void LoadNextLevel()
 	{
-		SceneManager.LoadScene(CurrentLevel + _buildIndexOffset);
 		CurrentLevel++;
+		SceneManager.LoadScene(CurrentLevel + _buildIndexOffset);
+		LevelTimer = _timeAllocatedPerLevel;
+		onLoadNewScene();
 	}
+
+
 
 	// move player
 
