@@ -13,6 +13,8 @@ public class ButtonPuzzle : MonoBehaviour
 
 	PuzzleManager PManager;
 
+	[SerializeField] private Transform _buttonObject;
+
 	void Start()
 	{
 		PManager = PuzzleManager.Instance;
@@ -31,21 +33,32 @@ public class ButtonPuzzle : MonoBehaviour
 
 	}
 
+	void ButtonPress(bool b)
+	{
+		if (b)
+			_buttonObject.localPosition = new Vector3(0f, 0.1f, 0f);
+		else
+			_buttonObject.localPosition = new Vector3(0f, 0.74f, 0f);
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 
 		PManager.UpdateValueInCollection(_ID.Value, true);
+		ButtonPress(true);
 
 	}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        PManager.UpdateValueInCollection(_ID.Value, true);
-    }
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		PManager.UpdateValueInCollection(_ID.Value, true);
+		ButtonPress(true);
+	}
 
-    void OnTriggerExit2D(Collider2D other)
+	void OnTriggerExit2D(Collider2D other)
 	{
 		PManager.UpdateValueInCollection(_ID.Value, false);
+		ButtonPress(false);
 
 	}
 
