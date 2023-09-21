@@ -25,6 +25,8 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	// Core 
 	private Rigidbody2D _rb;
 
+	private PlayerAnimations _ani;
+
 	private Dictionary<bool[], string> _fourAxisOfMovement;
 
 	private bool[] _currentInputArray = new bool[4]; // structured as W A S D = 0 1 2 3
@@ -36,6 +38,7 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	void Awake()
 	{
 		_rb = GetComponent<Rigidbody2D>();
+		_ani = GetComponent<PlayerAnimations>();
 	}
 
 	void Start()
@@ -69,8 +72,13 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	{
 		// TODO add more control.
 
+		Vector2 moveDir = MoveDir();
+
+		// animation
+		_ani.MoveDir = new Vector2(moveDir.x, _rb.velocityY);
 
 
+		// movement
 		float ySpeed = _rb.velocity.y;
 
 		_rb.velocity = new Vector2(_rb.velocity.x, 0);
@@ -86,23 +94,23 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 
 
 		// jumping
-		if (MoveDir().y > 0 && _rb.velocityY <= 0.1f && _isGrounded)
+		if (moveDir.y > 0 && _rb.velocityY <= 0.1f && _isGrounded)
 		{
 			_rb.AddForce(new Vector2(0, _jumpHeight * _jumpHeight), ForceMode2D.Impulse);
 		}
 
 		// left right movement
-		_rb.AddForce(new Vector2(MoveDir().x, 0) * _walkSpeed * _multiplyer, ForceMode2D.Force);
+		_rb.AddForce(new Vector2(moveDir.x, 0) * _walkSpeed * _multiplyer, ForceMode2D.Force);
 
 
 		// TODO replace this with sting interpitation
 		// we are not taking W or S in account.
 
-		if (MoveDir().x > 0 && _rb.velocityX < 0)
+		if (moveDir.x > 0 && _rb.velocityX < 0)
 		{
 			_rb.velocityX = 0f;
 		}
-		else if (MoveDir().x < 0 && _rb.velocityX > 0)
+		else if (moveDir.x < 0 && _rb.velocityX > 0)
 		{
 			_rb.velocityX = 0f;
 		}
@@ -114,7 +122,7 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 		// {
 		// 	_rb.velocityX = 0f; // stops any movement
 		// }
-		else if ((MoveDir().x > 0 && _rb.velocityX > 0) || (MoveDir().x < 0 && _rb.velocityX < 0))
+		else if ((moveDir.x > 0 && _rb.velocityX > 0) || (moveDir.x < 0 && _rb.velocityX < 0))
 		{
 			// nothing
 		}
