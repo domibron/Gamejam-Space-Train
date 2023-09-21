@@ -9,7 +9,15 @@ public class PuzzleManager : MonoBehaviour
 
 	public Dictionary<int, bool> Objectives = new Dictionary<int, bool>();
 
-	public GameObject Door;
+	// public GameObject Door;
+
+	public SpriteRenderer DoorSprite;
+
+	public Collider2D DoorCollider;
+
+	public Sprite DoorClosed;
+	public Sprite DoorOpen;
+
 
 	void Awake()
 	{
@@ -25,7 +33,7 @@ public class PuzzleManager : MonoBehaviour
 
 	void Update()
 	{
-		if (Objectives.Count <= 0 || Door == null) return;
+		if (Objectives.Count <= 0 || DoorSprite == null) return;
 
 		bool allCompleate = false;
 
@@ -43,13 +51,20 @@ public class PuzzleManager : MonoBehaviour
 			}
 		}
 
+		print(allCompleate);
+
 		if (allCompleate == true)
 		{
-			Door.SetActive(false);
+			DoorCollider.enabled = false;
+			DoorSprite.sprite = DoorOpen;
 		}
 		else
 		{
-			if (!Door.activeSelf) Door.SetActive(true);
+			// if (!DoorCollider.enabled)
+			// {
+			DoorCollider.enabled = true;
+			DoorSprite.sprite = DoorClosed;
+			// }
 		}
 	}
 
