@@ -81,6 +81,11 @@ public class MasterSceneManager : MonoBehaviour
 			print(currentSceneIndex);
 			CurrentLevel = currentSceneIndex - _buildIndexOffset;
 		}
+
+		HighLevel = PlayerPrefs.GetInt("lvl");
+		TimeAllocatedPerLevel = PlayerPrefs.GetFloat("time");
+
+		LevelTimer = TimeAllocatedPerLevel;
 	}
 
 	void Update()
