@@ -48,6 +48,8 @@ public class MasterSceneManager : MonoBehaviour
 		{
 			Instance = this;
 			DontDestroyOnLoad(this);
+			HighLevel = PlayerPrefs.GetInt("lvl");
+			TimeAllocatedPerLevel = PlayerPrefs.GetFloat("time");
 		}
 	}
 
@@ -82,8 +84,7 @@ public class MasterSceneManager : MonoBehaviour
 			CurrentLevel = currentSceneIndex - _buildIndexOffset;
 		}
 
-		HighLevel = PlayerPrefs.GetInt("lvl");
-		TimeAllocatedPerLevel = PlayerPrefs.GetFloat("time");
+
 
 		LevelTimer = TimeAllocatedPerLevel;
 	}
