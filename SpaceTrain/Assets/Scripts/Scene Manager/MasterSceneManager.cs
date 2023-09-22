@@ -17,13 +17,15 @@ public class MasterSceneManager : MonoBehaviour
 
 	[SerializeField] private int _buildIndexOffset = 1;
 
-	[SerializeField] private float _timeAllocatedPerLevel = 180f;
+	public float TimeAllocatedPerLevel = 180f;
 
 	[SerializeField] private bool _overideLoad = false;
 
 	[SerializeField] private String _loseSceneName;
 
 	[SerializeField] private String[] _levelSceneNames = { "RND 1", "RND 2", "RND 3", "RND 4", "RND 5", "RND 6", "RND 7", "RND 8", "RND 9", "RND 10", };
+
+	public int HighLevel = 100;
 
 
 	[Header("Do not change, for debuging")]
@@ -91,7 +93,7 @@ public class MasterSceneManager : MonoBehaviour
 			return;
 		}
 
-		if (CurrentLevel == 100)
+		if (CurrentLevel == HighLevel)
 		{
 			Destroy(PlayerInstance.Instance.transform.parent.gameObject);
 			// SceneManager.LoadScene(_loseSceneName);
@@ -99,7 +101,7 @@ public class MasterSceneManager : MonoBehaviour
 			return;
 		}
 
-		if (SceneManager.GetActiveScene().buildIndex != 1 && CurrentLevel != 100)
+		if (SceneManager.GetActiveScene().buildIndex != 1 && CurrentLevel != HighLevel)
 			LevelTimer -= Time.deltaTime;
 
 
@@ -121,21 +123,22 @@ public class MasterSceneManager : MonoBehaviour
 	public void LoadNextLevel()
 	{
 		CurrentLevel++;
-		if (CurrentLevel != 100 && CurrentLevel <= 8)
+		if (CurrentLevel != HighLevel && CurrentLevel <= 8)
 		{
 			SceneManager.LoadScene(CurrentLevel + _buildIndexOffset);
-			LevelTimer = _timeAllocatedPerLevel;
+			LevelTimer = TimeAllocatedPerLevel;
 			onLoadNewScene();
 		}
-		else if (CurrentLevel != 100 && CurrentLevel > 8)
+		else if (CurrentLevel != HighLevel && CurrentLevel > 8)
 		{
 			SceneManager.LoadScene(_levelSceneNames[UnityEngine.Random.Range(0, 9)]);
-			LevelTimer = _timeAllocatedPerLevel;
+			LevelTimer = TimeAllocatedPerLevel;
 			onLoadNewScene();
 		}
-		else if (CurrentLevel == 100)
+		else if (CurrentLevel == HighLevel)
 		{
-			LevelTimer = _timeAllocatedPerLevel;
+			LevelTimer = TimeAllocatedPerLevel;
+			PlayerPrefs.SetInt("score", HighLevel);
 			SceneManager.LoadScene("End");
 		}
 	}
