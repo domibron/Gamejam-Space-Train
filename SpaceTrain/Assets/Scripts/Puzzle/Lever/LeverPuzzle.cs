@@ -14,7 +14,10 @@ public class LeverPuzzle : MonoBehaviour, IPlayerInteractable
 
 	private bool _leverStatus = false;
 
-	[SerializeField] private Transform _lever;
+	[SerializeField] private SpriteRenderer _lever;
+
+	[SerializeField] private Sprite _leverUp;
+	[SerializeField] private Sprite _leverDown;
 
 
 	void Start()
@@ -42,13 +45,13 @@ public class LeverPuzzle : MonoBehaviour, IPlayerInteractable
 		if (_leverStatus)
 		{
 			_leverStatus = false;
-			_lever.localPosition = new Vector3(0f, 0.3f, -0.1f);
+			_lever.sprite = _leverUp;
 			_pManager.UpdateValueInCollection(_ID.Value, _leverStatus);
 		}
 		else
 		{
 			_leverStatus = true;
-			_lever.localPosition = new Vector3(0f, -0.3f, -0.1f);
+			_lever.sprite = _leverDown;
 			_pManager.UpdateValueInCollection(_ID.Value, _leverStatus);
 		}
 	}
@@ -58,12 +61,12 @@ public class LeverPuzzle : MonoBehaviour, IPlayerInteractable
 		if (!b)
 		{
 			_leverStatus = false;
-			_lever.localPosition = new Vector3(0f, 0.3f, -0.1f);
+			_lever.sprite = _leverUp;
 		}
 		else
 		{
 			_leverStatus = true;
-			_lever.localPosition = new Vector3(0f, -0.3f, -0.1f);
+			_lever.sprite = _leverDown;
 
 		}
 	}

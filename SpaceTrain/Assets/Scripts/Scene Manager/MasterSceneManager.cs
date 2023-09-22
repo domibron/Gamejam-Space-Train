@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,11 +21,20 @@ public class MasterSceneManager : MonoBehaviour
 
 	[SerializeField] private bool _overideLoad = false;
 
+	[SerializeField] private String _loseSceneName;
+
+	[SerializeField] private String[] _levelSceneNames = { "RND 1", "RND 2", "RND 3", "RND 4", "RND 5", "RND 6", "RND 7", "RND 8", "RND 9", "RND 10", };
+
+
 	[Header("Do not change, for debuging")]
 
 	public int CurrentLevel = 0;
 
 	public float LevelTimer = 180f;
+
+	// private variables.
+
+	private bool _gameOver = false;
 
 	void Awake()
 	{
@@ -73,28 +83,60 @@ public class MasterSceneManager : MonoBehaviour
 
 	void Update()
 	{
-		LevelTimer -= Time.deltaTime;
+		if (_gameOver) // might be dumb, i think it is. could do this in the if statment below.
+		{
+			Destroy(PlayerInstance.Instance.transform.parent.gameObject);
+			SceneManager.LoadScene(_loseSceneName);
+			Destroy(this.gameObject);
+			return;
+		}
+
+		if (CurrentLevel == 100)
+		{
+			Destroy(PlayerInstance.Instance.transform.parent.gameObject);
+			// SceneManager.LoadScene(_loseSceneName);
+			Destroy(this.gameObject);
+			return;
+		}
+
+		if (SceneManager.GetActiveScene().buildIndex != 1 && CurrentLevel != 100)
+			LevelTimer -= Time.deltaTime;
+
 
 		if (LevelTimer <= 0)
 		{
+			_gameOver = true;
 			// Kill player, restart, gameover
 		}
+
+		// score
+		if (CurrentLevel > PlayerPrefs.GetInt("score"))
+		{
+			PlayerPrefs.SetInt("score", CurrentLevel);
+		}
+
 	}
 
 	// call this once every level.
 	public void LoadNextLevel()
 	{
 		CurrentLevel++;
-		SceneManager.LoadScene(CurrentLevel + _buildIndexOffset);
-		LevelTimer = _timeAllocatedPerLevel;
-		onLoadNewScene();
+		if (CurrentLevel != 100 && CurrentLevel <= 8)
+		{
+			SceneManager.LoadScene(CurrentLevel + _buildIndexOffset);
+			LevelTimer = _timeAllocatedPerLevel;
+			onLoadNewScene();
+		}
+		else if (CurrentLevel != 100 && CurrentLevel > 8)
+		{
+			SceneManager.LoadScene(_levelSceneNames[UnityEngine.Random.Range(0, 9)]);
+			LevelTimer = _timeAllocatedPerLevel;
+			onLoadNewScene();
+		}
+		else if (CurrentLevel == 100)
+		{
+			LevelTimer = _timeAllocatedPerLevel;
+			SceneManager.LoadScene("End");
+		}
 	}
-
-
-
-	// move player
-
-	// so on
-
-
 }

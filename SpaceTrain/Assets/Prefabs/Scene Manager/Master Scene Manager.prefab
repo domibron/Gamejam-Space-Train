@@ -45,7 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildIndexOffset: 1
-  _timeAllocatedPerLevel: 180
+  _timeAllocatedPerLevel: 10
   _overideLoad: 1
+  _loseSceneName: Lose
+  _levelSceneNames:
+  - RND 1
+  - RND 2
+  - RND 3
+  - RND 4
+  - RND 5
+  - RND 6
+  - RND 7
+  - RND 8
+  - RND 9
+  - RND 10
   CurrentLevel: 0
-  LevelTimer: 180
+  LevelTimer: 10

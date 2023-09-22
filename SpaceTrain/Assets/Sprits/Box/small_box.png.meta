@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: -690826803459884053
     second: small_box_0
-  - first:
-      213: -6040011263371738158
-    second: small_box_1
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -121,6 +118,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -129,9 +150,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 63
-        y: 42
-        width: 156
-        height: 198
+        y: 57
+        width: 147
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,27 +162,6 @@ TextureImporter:
       bones: []
       spriteID: beb7472bea0b966f0800000000000000
       internalID: -690826803459884053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: small_box_1
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 60
-        width: 6
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d38e5fd1c19d2ca0800000000000000
-      internalID: -6040011263371738158
       vertices: []
       indices: 
       edges: []
@@ -176,9 +176,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      small_box_0: -690826803459884053
-      small_box_1: -6040011263371738158
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

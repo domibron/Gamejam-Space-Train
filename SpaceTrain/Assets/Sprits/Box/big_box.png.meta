@@ -5,21 +5,6 @@ TextureImporter:
   - first:
       213: 3502278643861607403
     second: big_box_0
-  - first:
-      213: 4144543959990164588
-    second: big_box_1
-  - first:
-      213: 8494020294799284455
-    second: big_box_2
-  - first:
-      213: 1866532894782602165
-    second: big_box_3
-  - first:
-      213: -6992798326713330672
-    second: big_box_4
-  - first:
-      213: -3792817569509208966
-    second: big_box_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -133,6 +118,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -142,8 +151,8 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 72
-        width: 563
-        height: 159
+        width: 545
+        height: 147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,111 +162,6 @@ TextureImporter:
       bones: []
       spriteID: be3dec7eed79a9030800000000000000
       internalID: 3502278643861607403
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big_box_1
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 182
-        width: 17
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6c543bd5c0648930800000000000000
-      internalID: 4144543959990164588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big_box_2
-      rect:
-        serializedVersion: 2
-        x: 545
-        y: 89
-        width: 10
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7e858727472d0e570800000000000000
-      internalID: 8494020294799284455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big_box_3
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 51
-        width: 477
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5bb391b47c147e910800000000000000
-      internalID: 1866532894782602165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big_box_4
-      rect:
-        serializedVersion: 2
-        x: 424
-        y: 51
-        width: 29
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0145e46a8f694fe90800000000000000
-      internalID: -6992798326713330672
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: big_box_5
-      rect:
-        serializedVersion: 2
-        x: 462
-        y: 51
-        width: 40
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a7c0b8704843d5bc0800000000000000
-      internalID: -3792817569509208966
       vertices: []
       indices: 
       edges: []
@@ -272,13 +176,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      big_box_0: 3502278643861607403
-      big_box_1: 4144543959990164588
-      big_box_2: 8494020294799284455
-      big_box_3: 1866532894782602165
-      big_box_4: -6992798326713330672
-      big_box_5: -3792817569509208966
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 96f7718f3f3959e43a4cca270b256a19
+guid: 1b7b7e62f50707649a40293430899e99
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -149,10 +149,10 @@ TextureImporter:
       name: Button_base_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1839
-        height: 258
+        x: 22
+        y: 73
+        width: 126
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
