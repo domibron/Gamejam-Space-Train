@@ -18,6 +18,8 @@ public class PuzzleManager : MonoBehaviour
 	public Sprite DoorClosed;
 	public Sprite DoorOpen;
 
+	public bool Overide = false;
+
 
 	void Awake()
 	{
@@ -33,7 +35,7 @@ public class PuzzleManager : MonoBehaviour
 
 	void Update()
 	{
-		if (Objectives.Count <= 0 || DoorSprite == null) return;
+		if (Objectives.Count <= 0 || DoorSprite == null || Overide) return;
 
 		bool allCompleate = false;
 
