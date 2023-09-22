@@ -112,7 +112,7 @@ public class MasterSceneManager : MonoBehaviour
 		}
 
 		// score
-		if (CurrentLevel > PlayerPrefs.GetInt("score"))
+		if (CurrentLevel > PlayerPrefs.GetInt("score") && CurrentLevel < HighLevel)
 		{
 			PlayerPrefs.SetInt("score", CurrentLevel);
 		}
