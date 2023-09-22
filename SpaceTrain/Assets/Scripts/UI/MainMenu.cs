@@ -34,15 +34,17 @@ public class MainMenu : MonoBehaviour
 			Score.text = $"Score: {PlayerPrefs.GetInt("score")}";
 		}
 
-		if (!PlayerPrefs.HasKey("time"))
-		{
-			PlayerPrefs.SetFloat("time", TimeForNormalLevel);
-		}
+		// if (!PlayerPrefs.HasKey("time"))
+		// {
+		// print("set time");
+		PlayerPrefs.SetFloat("time", TimeForNormalLevel);
+		// }
 
-		if (!PlayerPrefs.HasKey("lvl"))
-		{
-			PlayerPrefs.SetInt("lvl", LevelCountNormal);
-		}
+		// if (!PlayerPrefs.HasKey("lvl"))
+		// {
+		// print("set");
+		PlayerPrefs.SetInt("lvl", LevelCountNormal);
+		// }
 	}
 
 	// Update is called once per frame
