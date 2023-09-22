@@ -61,11 +61,34 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 	private void OnLoadNewScene()
 	{
 		print("Check");
-		_currentInputArray[0] = false;
-		_currentInputArray[1] = false;
-		_currentInputArray[2] = false;
-		_currentInputArray[3] = false;
+
+		if (Input.GetKey(KeyCode.W))
+		{
+			_currentInputArray[0] = true;
+		}
+		else
+			_currentInputArray[0] = false;
+		if (Input.GetKey(KeyCode.A))
+		{
+			_currentInputArray[1] = true;
+		}
+		else
+			_currentInputArray[1] = false;
+		if (Input.GetKey(KeyCode.S))
+		{
+			_currentInputArray[2] = true;
+		}
+		else
+			_currentInputArray[2] = false;
+		if (Input.GetKey(KeyCode.D))
+		{
+			_currentInputArray[3] = true;
+		}
+		else
+			_currentInputArray[3] = false;
 		_isGrounded = false;
+
+		print($"{_currentInputArray[0]} {_currentInputArray[1]} {_currentInputArray[2]} {_currentInputArray[3]}");
 	}
 
 	private void HandleMovement()
@@ -108,13 +131,15 @@ public class BasicMovement : MonoBehaviour, IWASDInput
 
 		if (moveDir.x > 0 && _rb.velocityX < 0)
 		{
+			// print("right");s
 			_rb.velocityX = 0f;
 		}
 		else if (moveDir.x < 0 && _rb.velocityX > 0)
 		{
+			// print("left");
 			_rb.velocityX = 0f;
 		}
-		else if (!_currentInputArray[1] && !_currentInputArray[3])
+		else if ((!_currentInputArray[1] && !_currentInputArray[3]) && (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)))
 		{
 			_rb.velocityX = 0f; // stops any movement
 		}

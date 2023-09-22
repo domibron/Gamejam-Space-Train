@@ -388,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4452693567438797859}
   - component: {fileID: 3295276967203206561}
+  - component: {fileID: 2450754884366480223}
   m_Layer: 3
   m_Name: Player holder (do not move)
   m_TagString: Player
@@ -422,6 +423,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 871b6046917c5ff46a46410914f506a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2450754884366480223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415114686006715483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a31f342d4b1ce346981c770300d92fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6451163069167570210
