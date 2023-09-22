@@ -16,6 +16,11 @@ public class Trigger : MonoBehaviour
 
 	private Collider2D _collider;
 
+	void Start()
+	{
+		_collider = GetComponent<Collider2D>();
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		// check to see if its the player and it has not been triggered before

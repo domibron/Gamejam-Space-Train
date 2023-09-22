@@ -176,7 +176,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hanger_silhouette_0: 1884703069303496259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

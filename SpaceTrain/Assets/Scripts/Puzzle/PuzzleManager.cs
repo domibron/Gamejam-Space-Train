@@ -51,8 +51,6 @@ public class PuzzleManager : MonoBehaviour
 			}
 		}
 
-		print(allCompleate);
-
 		if (allCompleate == true)
 		{
 			DoorCollider.enabled = false;

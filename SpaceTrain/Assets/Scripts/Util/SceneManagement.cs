@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    public static void LoadScene(int buildIntdex)
-    {
-        SceneManager.LoadScene(buildIntdex);
-    }
+	public void LoadScene(int buildIndex)
+	{
+		SceneManager.LoadScene(buildIndex);
+	}
+
+	public void DestroyPlayerAndLoadScene(int buildIndex)
+	{
+		Destroy(PlayerInstance.Instance.transform.parent.gameObject);
+		SceneManager.LoadScene(buildIndex);
+	}
 }
